@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { VideoService } from './video.service';
 import { Model } from 'mongoose';
-import { getModelToken } from '@nestjs/mongoose';
 import { Video } from './schemas/video.schema';
 
 describe('VideoService', () => {
@@ -16,7 +15,7 @@ describe('VideoService', () => {
       providers: [
         VideoService,
         {
-          provide: getModelToken(Video.name),
+          provide: Video.name,
           useValue: videoModelMock,
         },
       ],

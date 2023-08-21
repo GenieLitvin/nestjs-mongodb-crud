@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MultipleService } from './multiple.service';
 import { Model } from 'mongoose';
-import { getModelToken } from '@nestjs/mongoose';
 import { Multiple } from './schemas/multiple.schema';
 
 describe('MultipleService', () => {
@@ -14,7 +13,7 @@ describe('MultipleService', () => {
       providers: [
         MultipleService,
         {
-          provide: getModelToken(Multiple.name),
+          provide: Multiple.name,
           useValue: multipleModelMock,
         },
       ],

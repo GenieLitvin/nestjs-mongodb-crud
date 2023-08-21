@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CollectionService } from './collection.service';
-import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Multiple } from '../multiple/schemas/multiple.schema';
 import { Video } from '../video/schemas/video.schema';
@@ -19,31 +18,29 @@ describe('CollectionService', () => {
       providers: [
         CollectionService,
         {
-          provide: getModelToken(Multiple.name),
+          provide: Multiple.name,
           useValue: Model,
         },
         {
-          provide: getModelToken(Video.name),
+          provide: Video.name,
           useValue: Model,
         },
         {
-          provide: getModelToken(Question.name),
+          provide: Question.name,
           useValue: Model,
         },
         {
-          provide: getModelToken(Fillblank.name),
+          provide: Fillblank.name,
           useValue: Model,
         },
       ],
     }).compile();
 
     service = module.get<CollectionService>(CollectionService);
-    multipleModel = module.get<Model<Multiple>>(getModelToken(Multiple.name));
-    videoModel = module.get<Model<Video>>(getModelToken(Video.name));
-    questionModel = module.get<Model<Question>>(getModelToken(Question.name));
-    fillblankModel = module.get<Model<Fillblank>>(
-      getModelToken(Fillblank.name),
-    );
+    multipleModel = module.get<Model<Multiple>>(Multiple.name);
+    videoModel = module.get<Model<Video>>(Video.name);
+    questionModel = module.get<Model<Question>>(Question.name);
+    fillblankModel = module.get<Model<Fillblank>>(Fillblank.name);
   });
 
   it('should be defined', () => {

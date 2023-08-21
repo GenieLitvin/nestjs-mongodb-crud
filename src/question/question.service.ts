@@ -1,4 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
+
 import { Model } from 'mongoose';
 
 import { Question } from './schemas/question.schema';
@@ -8,8 +9,7 @@ import { UpdateQuestionDto } from './dto/update-question.dto';
 @Injectable()
 export class QuestionService {
   constructor(
-    @Inject(Question.name)
-    private readonly questionModel: Model<Question>,
+    @Inject(Question.name) private readonly questionModel: Model<Question>,
   ) {}
 
   async create(createQuestionDto: CreateQuestionDto): Promise<Question> {

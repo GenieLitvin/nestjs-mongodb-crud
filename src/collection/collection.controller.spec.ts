@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CollectionController } from './collection.controller';
 import { CollectionService } from './collection.service';
-import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Multiple } from '../multiple/schemas/multiple.schema';
 import { Video } from '../video/schemas/video.schema';
@@ -18,19 +17,19 @@ describe('CollectionController', () => {
       providers: [
         CollectionService,
         {
-          provide: getModelToken(Multiple.name),
+          provide: Multiple.name,
           useValue: Model,
         },
         {
-          provide: getModelToken(Video.name),
+          provide: Video.name,
           useValue: Model,
         },
         {
-          provide: getModelToken(Question.name),
+          provide: Question.name,
           useValue: Model,
         },
         {
-          provide: getModelToken(Fillblank.name),
+          provide: Fillblank.name,
           useValue: Model,
         },
       ],

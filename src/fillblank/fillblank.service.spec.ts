@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FillblankService } from './fillblank.service';
 import { Model } from 'mongoose';
-import { getModelToken } from '@nestjs/mongoose';
 import { Fillblank } from './schemas/fillblank.schema';
 describe('FillblankService', () => {
   let service: FillblankService;
@@ -13,7 +12,7 @@ describe('FillblankService', () => {
       providers: [
         FillblankService,
         {
-          provide: getModelToken(Fillblank.name),
+          provide: Fillblank.name,
           useValue: fillblankModelMock,
         },
       ],
