@@ -13,22 +13,3 @@ services:
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     command: ["mongod", "--bind_ip_all"]
-  app:
-    depends_on:
-      - mongodb
-    build: .
-    restart: unless-stopped
-    env_file: ./.env
-    ports:
-      - "3000:3000"
-    environment:
-      - DB_HOST=mongodb
-      - DB_USER=$MONGODB_USER
-      - DB_PASSWORD=$MONGODB_PASSWORD
-      - DB_NAME=$MONGODB_DATABASE
-      - DB_PORT=$MONGODB_DOCKER_PORT
-    stdin_open: true
-    tty: true
-
-# volumes:
-#   node-mongo-data:
