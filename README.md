@@ -14,6 +14,7 @@ This project is a basic NestJS application that demonstrates the creation of a R
 - **CRUD Operations**: The API offers Create, Read, Update, and Delete functionality for questions and their corresponding answer options.
 
 - **Docker Integration**: The project is designed to be Docker-friendly, facilitating easy deployment and management of the application and its dependencies.
+- **Swagger API documentation**
 
 ## Installation
 
@@ -30,7 +31,7 @@ $ docker-compose up -d
 # Start the NestJS application in development mode
 $ npm run start:dev
 ```
-
+### To open the Swagger UI navigate to http://localhost:3000/api
 ## Test
 ### unit tests
 ```$ npm run test```
